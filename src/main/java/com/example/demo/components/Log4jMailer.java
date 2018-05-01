@@ -4,6 +4,7 @@ import java.net.UnknownHostException;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.log4j.HTMLLayout;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
@@ -29,12 +30,14 @@ public class Log4jMailer {
 		appender.setFrom("sananth949494@gmail.com");
 		appender.setTo("sananth949494@gmail.com");
 		appender.setSubject("Testing Log4j Mail Notification");
-		appender.setThreshold(Level.INFO);
+		appender.setThreshold(Level.ERROR);
 		//PatternLayout pl = new PatternLayout("%-7p %d [%t] %c %x - %m%n");
-		PatternLayout pl = new PatternLayout();
-		pl.setConversionPattern("%-7p %d [%t] %c %x - %m%n");
-		appender.setLayout(pl);
+		//PatternLayout pl = new PatternLayout();
+		//pl.setConversionPattern("%-7p %d [%t] %c %x - %m%n");
+		//appender.setLayout(pl);
 		
+		HTMLLayout hl = new HTMLLayout();		
+		appender.setLayout(hl);		
 		appender.activateOptions();
 	
 	    Logger.getRootLogger().addAppender(appender);
